@@ -1,5 +1,5 @@
 --begin tran
-use [COMPANY_9406619];
+use [COMPANY_index]; -- insert index number
 GO
 INSERT INTO EMPLOYEE VALUES ('John', 'B', 'Smith', '123456789', '1965-01-09', '731 Fondren, Houston, TX', 'M', 30000, '333445555', 5)
 INSERT INTO EMPLOYEE VALUES ('Alicia', 'J', 'Zelaya', '999887777', '1968-01-19', '3321 Castle, Spring, Tx', 'F', 25000, '987654321', 4)
