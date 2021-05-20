@@ -22,7 +22,7 @@ CREATE TABLE EMPLOYEE (
   Sex CHAR(1),
   Salary int,
   Super_ssn int ,
-  Dno int NOT NULL,  
+  Dno int ,  
 );
 CREATE TABLE DEPARTMENT(
     Dname VARCHAR(50),    
