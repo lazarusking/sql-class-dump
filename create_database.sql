@@ -3,7 +3,7 @@
 -- remove GO ,it only works on MS SQL I think 
 CREATE DATABASE [COMPANY_your_index] -- use index number
 GO
---begin tran (code between begin is run temporaril, use for testing )
+--begin tran (code between begin is run temporarily, use for testing )
 --DROP TABLE IF EXISTS EMPLOYEE;
 --DROP TABLE IF EXISTS DEPARTMENT;
 --DROP TABLE IF EXISTS DEPT_LOCATIONS;
@@ -27,7 +27,7 @@ CREATE TABLE EMPLOYEE (
 CREATE TABLE DEPARTMENT(
     Dname VARCHAR(50),    
     Dnumber int NOT NULL PRIMARY KEY,
-    Mgr_ssn int NOT NULL FOREIGN KEY REFERENCES EMPLOYEE(Ssn), 
+    Mgr_ssn int , 
     Mgr_start_date DATE,    
 );
 CREATE TABLE DEPT_LOCATIONS(
