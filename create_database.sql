@@ -12,6 +12,12 @@ GO
 --DROP TABLE IF EXISTS [DEPENDENT];
 
 USE [COMPANY_your_index]
+CREATE TABLE DEPARTMENT(
+    Dname VARCHAR(50),    
+    Dnumber int NOT NULL PRIMARY KEY,
+    Mgr_ssn int , 
+    Mgr_start_date DATE,    
+);
 CREATE TABLE EMPLOYEE (
   Fname VARCHAR(255),
   Minit VARCHAR(3),
@@ -22,17 +28,11 @@ CREATE TABLE EMPLOYEE (
   Sex CHAR(1),
   Salary int,
   Super_ssn int ,
-  Dno int ,  
-);
-CREATE TABLE DEPARTMENT(
-    Dname VARCHAR(50),    
-    Dnumber int NOT NULL PRIMARY KEY,
-    Mgr_ssn int , 
-    Mgr_start_date DATE,    
+  Dno int FOREIGN KEY REFERENCES DEPARTMENT(Dnumber),  
 );
 CREATE TABLE DEPT_LOCATIONS(
     Dnumber int NOT NULL REFERENCES DEPARTMENT(Dnumber),
-    Dlocation VARCHAR(50),
+    Dlocation VARCHAR(50) ,
 );
 CREATE TABLE PROJECT(
     Pname VARCHAR(20),
@@ -47,7 +47,7 @@ CREATE TABLE WORKS_ON(
 );
 CREATE TABLE [DEPENDENT] (
     Essn int NOT NULL FOREIGN KEY REFERENCES EMPLOYEE(Ssn),
-    Dependent_name varchar(50) UNIQUE,
+    Dependent_name varchar(50) ,
     Sex char(1),
     Bdate date,
     Relationship varchar(50), 
