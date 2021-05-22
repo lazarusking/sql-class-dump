@@ -18,7 +18,7 @@ CREATE TABLE EMPLOYEE (
   Lname VARCHAR(255),
   Ssn int NOT NULL PRIMARY KEY,
   Bdate DATE,
-  Address VARCHAR(30),
+  Address VARCHAR(255),
   Sex CHAR(1),
   Salary int,
   Super_ssn int ,
