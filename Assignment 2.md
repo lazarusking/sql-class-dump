@@ -3,7 +3,7 @@ Find the sum of the salaries of all employees whose manager’s ssn is 333445555
 As well as the name of the department and the max, min, average salary of the employees in this department
 and the total number of employees in this department
 ``` TSQL
-SELECT DNAME,MAX(SALARY) AS MAX,MIN(SALARY) AS MIN,AVG(SALARY) AS average,COUNT(*) AS COUNT 
+SELECT DNAME,SUM(SALARY) AS SUM,MAX(SALARY) AS MAX,MIN(SALARY) AS MIN,AVG(SALARY) AS average,COUNT(*) AS COUNT 
 FROM EMPLOYEE INNER JOIN DEPARTMENT ON EMPLOYEE.DNO=DEPARTMENT.DNUMBER AND DEPARTMENT.MGR_SSN=333445555
 GROUP BY DNAME
 ```
