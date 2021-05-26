@@ -11,11 +11,19 @@ GROUP BY DNAME
 For each department, retrieve the department manager’s name, his supervisor, maxi& min salary
 and total number of employees in the department. As well as the name of the department
 ``` TSQL
-SELECT Emp.fname,Dname,mgr_ssn,max(employee.salary) as Max,min(employee.salary) as MIN,count(*) as count
-from [DEPARTMENT] inner join employee on
-Employee.dno=Department.dnumber left join Employee as emp on emp.ssn=Department.mgr_ssn
-group by dname,mgr_ssn,emp.fname
+SELECT Emp.fname,dname,Emp.ssn,E.dno,Esuper.fname as [Sup Name],Emp.super_ssn,max(E.salary) as Max,min(E.salary) as MIN,count(*) as Count 
+FROM [EMPLOYEE] as E, department, Employee as Emp left join Employee as Esuper on Esuper.ssn=emp.super_ssn  
+where  
+E.dno=Department.dnumber and emp.ssn=department.mgr_ssn 
+group by dname ,Emp.fname,dname,Emp.ssn,E.dno,Emp.super_ssn,Esuper.fname
 ``` 
+### OR
+``` TSQL
+SELECT Emp.fname as [Managers Name],Dname,mgr_ssn,Esuper.fname as [Sup Name],emp.Super_ssn,max(employee.salary) as Max,min(employee.salary) as MIN,count(*) as count 
+from [DEPARTMENT] inner join Employee as emp on emp.ssn=Department.mgr_ssn inner join employee on
+Employee.dno=Department.dnumber left join Employee as Esuper on Esuper.ssn=emp.Super_ssn  
+group by dname,mgr_ssn,emp.fname,Emp.Super_ssn,Esuper.fname
+```
  
 # Question 3: 
 For each project on which more than 2 employees work, retrieve the project number, project name, number of employees working on that project,
