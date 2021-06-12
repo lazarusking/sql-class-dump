@@ -40,3 +40,13 @@ HAVING COUNT(*)>2
 ``` TSQL
 DELETE FROM [table name]
 ```
+# Q5 : Create a view table Company CS2 
+``` TSQL
+-- DROP VIEW IF EXISTS [COMPANY CS2]
+CREATE VIEW [Company CS2] AS
+SELECT FNAME, LNAME ,SSN ,dname,dno, Pname,Hours *1.5 as [Wages]
+FROM EMPLOYEE, DEPARTMENT,PROJECT, WORKS_ON
+WHERE EMPLOYEE.SSN=WORKS_ON.Essn AND PROJECT.Pnumber=WORKS_ON.Pno and DEPARTMENT.Dnumber=EMPLOYEE.dno
+group by FNAME,LNAME,ssn,DNO,PNAME,hours,dname
+
+```
