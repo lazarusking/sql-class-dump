@@ -44,6 +44,18 @@ DELETE FROM [table name]
 ``` TSQL
 -- DROP VIEW IF EXISTS [COMPANY CS2]
 CREATE VIEW [Company CS2] AS
+SELECT E.FNAME, E.LNAME ,E.SSN,E.super_ssn,Emp.fname as [Sup Name] ,dname,E.dno, Pname,Hours *1.5 as [Wages]
+FROM EMPLOYEE as E
+inner join WORKS_ON on E.SSN=WORKS_ON.Essn inner join PROJECT on PROJECT.Pnumber=WORKS_ON.Pno
+inner join DEPARTMENT on DEPARTMENT.Dnumber=E.dno left join EMPLOYEE AS Emp on Emp.ssn=E.super_ssn
+group by E.FNAME,E.LNAME,E.ssn,E.DNO,PNAME,hours,dname,Emp.fname,E.super_ssn
+
+
+
+
+
+-- DROP VIEW IF EXISTS [COMPANY CS2]
+CREATE VIEW [Company CS2] AS
 SELECT FNAME, LNAME ,SSN ,dname,dno, Pname,Hours *1.5 as [Wages]
 FROM EMPLOYEE, DEPARTMENT,PROJECT, WORKS_ON
 WHERE EMPLOYEE.SSN=WORKS_ON.Essn AND PROJECT.Pnumber=WORKS_ON.Pno and DEPARTMENT.Dnumber=EMPLOYEE.dno
